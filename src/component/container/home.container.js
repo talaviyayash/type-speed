@@ -19,7 +19,7 @@ export default function Home() {
     (correctWord?.length + wrongWord?.length)
   ).toFixed(2);
   const accuracy = isNaN(tempAccuracy) ? 0 : tempAccuracy;
-  console.log(correctWord?.length + wrongWord?.length);
+
   function handelInput(event) {
     const value = event.target.value;
     setWord(value);
@@ -41,7 +41,27 @@ export default function Home() {
       setWordIsCorrect(false);
     }
   }
-
+  const handleSubmit = (event) => {
+    const value = event.target.value;
+    setWord(value);
+    const currentValue = paragraph[currentIndex];
+    if (value[value.length - 1] === " ") {
+      if (currentValue === value.trim()) {
+        setCorrectWord([...correctWord, currentIndex]);
+      } else {
+        setWrongWord([...wrongWord, currentIndex]);
+      }
+      setCurrentIndex(currentIndex + 1);
+      setWord("");
+      setWordIsCorrect(true);
+    } else if (value.length === 0) {
+      setWordIsCorrect(true);
+    } else if (currentValue.startsWith(value)) {
+      setWordIsCorrect(true);
+    } else {
+      setWordIsCorrect(false);
+    }
+  };
   return {
     paragraph,
     currentIndex,
