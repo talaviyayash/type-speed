@@ -17,9 +17,11 @@
   background-color: green;
   color: white;
   padding: 5px;
+  border-radius: 5px;
 }
 
 .wrong-background {
+  border-radius: 5px;
   background-color: red;
   color: black;
   padding: 5px;
