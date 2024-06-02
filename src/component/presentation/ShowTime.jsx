@@ -7,7 +7,6 @@ const ShowTime = ({ countDown, setCountDown }) => {
     countFloorForMinute <= 9 ? "0" + countFloorForMinute : countFloorForMinute;
   const countForSecond = countDown - Math.floor(countDown / 60) * 60;
   const seconds = countForSecond <= 9 ? "0" + countForSecond : countForSecond;
-  console.log(seconds);
   const time = minute + " : " + seconds;
   return (
     <>
